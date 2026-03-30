@@ -1,0 +1,28 @@
+# Python build/dist artifacts
+BECU_Utilities.egg-info/
+__pycache__/
+build/
+dist/
+
+# Development environment
+.venv/
+venv/
+env/
+
+# Windows specifics
+Thumbs.db
+Desktop.ini
+
+# purge90 data folders
+purge90/
+
+# Logging
+*.log
+tlog.py
+tlogs/
+
+# Nonsense
+chatgptsolution.py
+
+# ***Contains Secrets
+utilities.py
