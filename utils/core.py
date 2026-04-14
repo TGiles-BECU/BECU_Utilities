@@ -11,3 +11,8 @@ def ymd(days=0, return_list=0):
             selected_date[4:6],
             selected_date[6:],
         ]
+        
+def ymdt():
+    # returns date AND time like 20260101-042017
+    selected_date = datetime.now().strftime("%Y%m%d-%H%M%S")
+    return selected_date

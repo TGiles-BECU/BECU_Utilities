@@ -3,6 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 import re
+import random
 
 import logging
 logger = logging.getLogger(__name__)
@@ -46,3 +47,38 @@ def send(rec=None, subject=None, body=None):
             return f'Email sent successfully to: {receiver_string}'
     except Exception as e:
         return f'Failed to send email: {e}'
+        
+def seecil_closes():
+    
+    closings = [
+        # Christmas Season Ones
+        #"🎅 Swooping down the chimney",
+        #"🎄 Talon the halls",
+        #"❄️ Talon-tidings",
+        #"☃️ Festive and feathered",
+        #"🎄 Wings up, ornaments out",
+        #"🎄 Nesting by the tree"
+        "Counting feathers and funds",
+        "Feathered and focused",
+        "Swooping out",
+        "Stay talon-ted",
+        "Soaring off for now",
+        "Soaring expectations",
+        "Flapping and funding",
+        "Landing shortly",
+        "Feathers up",
+        "🦅 From the highest branch",
+        "Nesting and investing",
+        "Funding on the fly",
+        "No talon what's next",
+        "Wings up, rates down",
+        "Taking it to the nest level",
+        "Eagle eye on the prize",
+        "Ready for takeoff",
+        "Securing nest eggs",
+        "Soaring on schedule",
+        "Blue skies ahead"
+    ]
+    
+    
+    return random.choice(closings)
