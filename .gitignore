@@ -25,6 +25,7 @@ tlogs/
 
 # Nonsense
 chatgptsolution.py
+terror/
 
 # ***Contains Secrets
 utilities.py

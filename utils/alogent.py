@@ -224,7 +224,9 @@ def sparser(input_str):
     # Match was made!
     if last_name:
         mxlname = fdlname
-    if not last_name: raise Exception("Last name issue")
+    if not last_name:
+        logger.error(f"Member {mxmemnum} last name in FD: {fdlname}")
+        raise Exception("Last name issue")
     
     # Remove matched pieces from name_parts
     if len(name_parts) > 1:
