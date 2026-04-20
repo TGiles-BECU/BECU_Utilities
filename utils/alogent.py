@@ -134,6 +134,8 @@ def sparser(input_str):
         #raise Exception("Multiple acct numbers")
         name_parts.extend(number_parts[2:])
         del number_parts[2:]
+        
+    # ----- So at this point we only have the first two numbers in string that are 3 or more digits long ----- 
     
     # Lets find which number is member number and which is an account number
     
