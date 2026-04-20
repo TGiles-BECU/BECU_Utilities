@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "BECU_Utilities"
 version = "0.1.0"
 description = "BECU Script Utilities"
-dependencies = [] # Add other pip packages here if your scripts need them
+dependencies = ["requests", "dotenv", "pyodbc", "tlogger @ file:///C:/Scripts/tlogger"] # Add other pip packages here if your scripts need them
 
 [tool.setuptools]
 packages = ["utils"] # This tells pip to look at your 'utils' folder
