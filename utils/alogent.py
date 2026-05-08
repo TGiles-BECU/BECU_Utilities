@@ -118,7 +118,7 @@ def sparser(input_str):
     for part in parts:
         
         # Pattern has all numbers, atleast 3 digints, may or may not start with an L or S
-        pattern = r'^[SsLl]?(\d{3,})'
+        pattern = r'^[SsLl]*(\d{3,})'
         match = re.match(pattern, part)
         if match:
             number_parts.append(match.group(1))
