@@ -40,6 +40,9 @@ def ymdy():
     
 def fatal(message, solution='', ticket=0):
     
+    logger.critical(f"FATAL ERROR: {message}")
+    if solution: logger.critical(f"FATAL ERROR: {solution}")
+    
     # stack()[1] is the immediate caller
     frame = inspect.stack()[1]
     
@@ -85,7 +88,3 @@ URL:     https://blueeaglecreditunion.atlassian.net/browse/{jsm_key}
         
     # Exit the script
     sys.exit(1)
-    
-    
-    #logger.critical(f"FATAL ERROR: {message}")
-    #if solution: logger.critical(f"FATAL ERROR: {solution}")

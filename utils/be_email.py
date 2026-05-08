@@ -24,11 +24,20 @@ def send(rec=None, subject=None, body=None):
     else:
         logger.error("Receiver emails neither a list nor a string. Cannot send email...")
         return
-
-    receiver_final = [
-        addr if "@" in addr else f"{addr}@blueeaglecreditunion.com"
-        for addr in receivers if addr.strip()
-    ]
+    
+    receiver_final = []
+    bcc_list = []
+        
+    for addr in receivers:
+        
+        if "@" in addr: sel_addr = addr.strip()
+        else: sel_addr = f"{addr}@blueeaglecreditunion.com".strip()
+        
+        match = re.match(r"^bcc-(.*)", sel_addr, re.IGNORECASE)
+        if match: bcc_list.append(match.group(1))
+        else: receiver_final.append(sel_addr)
+        
+    all_recipients = receiver_final + bcc_list
         
     receiver_string = ", ".join(receiver_final)
     
@@ -43,7 +52,7 @@ def send(rec=None, subject=None, body=None):
     
     try:
         with smtplib.SMTP(smtp_server, smtp_port) as server:
-            server.send_message(msg)
+            server.send_message(msg, to_addrs=all_recipients)
             return f'Email sent successfully to: {receiver_string}'
     except Exception as e:
         return f'Failed to send email: {e}'

@@ -5,6 +5,14 @@ logger = logging.getLogger(__name__)
 
 import subprocess
 
+def get_file(app):
+    
+    terror_path = Path("C:/Scripts/Utilities/terror")
+    app_name = Path(app).stem
+    terror_file = terror_path / f"{app_name}-{ymd()}.txt"
+    
+    return terror_file
+
 def run_cmd(command):
     try:
         result = subprocess.run(command, capture_output=True, text=True, check=True, shell=True)
