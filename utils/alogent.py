@@ -218,7 +218,7 @@ def sparser(input_str):
     for typed_name in name_parts:
         for fd_name in multiname:
             name_score = compare(fd_name, typed_name)
-            if name_score > 80:
+            if name_score >= 80:
                 last_name.append(typed_name)
                 break
         if len(last_name) >= len(multiname): break
