@@ -23,6 +23,41 @@ def mask_acct(unmasked_filename):
     masked = ('*' * (10 - len(visible))) + visible
     return masked + memnum.group(2)
 
+def count_account(member, account):
+    server = os.getenv("ALOGENT_SERVER")
+    database = os.getenv("ALOGENT_DATABASE")
+    username = os.getenv("ALOGENT_USERNAME")
+    password = os.getenv("ALOGENT_PASSWORD")
+    driver = os.getenv("ALOGENT_DRIVER")
+    
+    connection_string = (
+        f'DRIVER={driver};'
+        f'SERVER={server};'
+        f'DATABASE={database};'
+        f'UID={username};'
+        f'PWD={password};'
+        f'TrustServerCertificate=yes;'
+    )
+    
+    conn = pyodbc.connect(connection_string)
+    
+    cursor = conn.cursor()
+    
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM Account
+        JOIN Customer on Customer.CustomerNumber = Account.Number
+        WHERE Customer.CustomerNumber = ?
+        AND Account.Description = ?
+    """, (member, account))
+    
+    row_count = cursor.fetchone()[0]
+    
+    cursor.close()
+    conn.close()
+    
+    return row_count
+
 def lname(mxmemnum, mxlnnum=None):
     server = os.getenv("ALOGENT_SERVER")
     database = os.getenv("ALOGENT_DATABASE")
