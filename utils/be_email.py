@@ -9,7 +9,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 # This may need to be changed if it changes.
-smtp_server = '172.17.33.25'
+# smtp_server = '172.17.33.25'
+smtp_server = 'itapps02.blueeaglecu.org'
 
 def send(rec=None, subject=None, body=None):
     
