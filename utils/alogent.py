@@ -149,14 +149,12 @@ def sparser(input_str):
     name_parts = []
     last_name = []
     
-    
     for part in parts:
+        # Find all numeric blocks of 3+ digits, ignoring any S/s/L/l prefixes
+        numbers = re.findall(r'[SsLl]*(\d{3,})', part)
         
-        # Pattern has all numbers, atleast 3 digints, may or may not start with an L or S
-        pattern = r'^[SsLl]*(\d{3,})'
-        match = re.match(pattern, part)
-        if match:
-            number_parts.append(match.group(1))
+        if numbers:
+            number_parts.extend(numbers)
         else:
             name_parts.append(part)
     
