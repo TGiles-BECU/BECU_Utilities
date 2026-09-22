@@ -29,3 +29,6 @@ terror/
 
 # ***Contains Secrets
 utilities.py
+
+# New Email
+be_email/
